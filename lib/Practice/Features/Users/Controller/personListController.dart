@@ -35,6 +35,10 @@ import 'package:riverpod_practice/Practice/Features/Users/Domain/person_model.da
 
 //NOTIFIER PROVIDER
 
+Map<int, PersonModel> personMap = {
+  1: const PersonModel("sdf", "sdf", 2),
+};
+
 //Class vandainam, mathi ko provider ko sub class ho!
 class PeronListController extends Notifier<List<PersonModel>> {
   @override
