@@ -26,11 +26,10 @@ class FrontPage extends ConsumerWidget {
             icon: const Icon(Icons.restart_alt)),
         IconButton(
             onPressed: () {
-              personService.switchTheme(ref);
+              ref.read(personService.themeProvider.notifier).switchTheme();
             },
             icon: const Icon(Icons.sunny))
       ]),
-      //backgroundColor: Colors.grey,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

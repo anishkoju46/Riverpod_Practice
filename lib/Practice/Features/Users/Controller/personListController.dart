@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_practice/Practice/Features/Users/Domain/person_model.dart';
 
@@ -28,9 +29,11 @@ import 'package:riverpod_practice/Practice/Features/Users/Domain/person_model.da
 //mathi, hamle ref use garna mildaina, making it difficult to seperate state + logic
 
 //=============================================================================
+//*New Learings:
+//Mathi (StateNotifier ma build ma async await = X)/ BUT we can use async await in class vitra ko methods\
+// tala Notifier ma chai, build mai async await garna milxa*//
 
 //NOTIFIER PROVIDER
-
 
 //Class vandainam, mathi ko provider ko sub class ho!
 class PeronListController extends Notifier<List<PersonModel>> {
@@ -50,5 +53,23 @@ class PeronListController extends Notifier<List<PersonModel>> {
 
   removePerson(int index) {
     state = [...state..removeAt(index)];
+  }
+
+  updatePerson(int index, {int? age, String? address, String? name}) {
+    state = [
+      ...state
+        ..[index] =
+            state[index].copyWith(age: age, address: address, name: name)
+    ];
+  }
+
+  addAge(int index) {
+    updatePerson(index, age: state[index].age + 1);
+  }
+
+  subtractAge(int index) {
+    if (state[index].age > 0) {
+      updatePerson(index, age: state[index].age - 1);
+    }
   }
 }

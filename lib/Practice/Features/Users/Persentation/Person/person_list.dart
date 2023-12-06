@@ -14,7 +14,8 @@ class PersonList extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final personService = ref.watch(personServiceProvider);
-    final value = ref.watch(personService.peronListNotifierProvider);
+    final count = ref.watch(personService.peronListNotifierProvider
+        .select((value) => value.length));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
@@ -22,13 +23,14 @@ class PersonList extends ConsumerWidget {
         Expanded(
           child: ListView.builder(
             //scrollDirection: Axis.horizontal,
-            itemCount: value.length,
+            itemCount: count,
             itemBuilder: (
               BuildContext context,
               int index,
             ) {
               return MyPersonInfo(
-                person: value[index],
+                //person: value[index],
+                //person: const PersonModel("Hero", "DC", 999),
                 index: index,
               );
             },
@@ -44,7 +46,7 @@ class PersonList extends ConsumerWidget {
 
               ref
                   .read(personService.peronListNotifierProvider.notifier)
-                  .addPerson(PersonModel("Acer", "UK"));
+                  .addPerson(const PersonModel("Acer", "UK", 07));
 
               // int a = 1;
               // print(a

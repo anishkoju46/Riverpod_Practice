@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_practice/Practice/Features/Users/Controller/personListController.dart';
+import 'package:riverpod_practice/Practice/Features/Users/Controller/theme_Controller.dart';
 import 'package:riverpod_practice/Practice/Features/Users/Domain/person_model.dart';
 
 //ref wala parameter not needed, inbuild mai hunxa.
@@ -28,20 +29,19 @@ class PersonService {
     ref.read(personServiceProvider.notifier).state = PersonService();
   }
 
-  final themeProvider = StateProvider<ThemeData>((ref) {
-    return ThemeData.light();
-  });
-
-  switchTheme(WidgetRef ref) {
-    final currentTheme = ref.read(themeProvider);
-
-    ref.read(themeProvider.notifier).state =
-        currentTheme.brightness == Brightness.light
-            ? ThemeData.dark()
-            : ThemeData.light();
-  }
-
-  // final themeProvider = NotifierProvider<ThemeData>((ref) {
-  //   return ThemeData.dark();
+  // final themeProvider = StateProvider<ThemeData>((ref) {
+  //   return ThemeData.light();
   // });
+
+  // switchTheme(WidgetRef ref) {
+  //   final currentTheme = ref.read(themeProvider);
+
+  //   ref.read(themeProvider.notifier).state =
+  //       currentTheme.brightness == Brightness.light
+  //           ? ThemeData.dark()
+  //           : ThemeData.light();
+  // }
+
+  final themeProvider =
+      NotifierProvider<ThemeController, ThemeData>(ThemeController.new);
 }

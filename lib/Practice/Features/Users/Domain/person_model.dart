@@ -2,14 +2,18 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final personProvider = Provider<PersonModel>((ref) {
-  return PersonModel("Ram", "UK");
+  return const PersonModel("Ram", "UK", 4);
 });
 
 class PersonModel {
-  String name;
-  String address;
-  final ageProvider = StateProvider<int>((ref) {
-    return 0;
-  });
-  PersonModel(this.name, this.address);
+  final String name;
+  final String address;
+  // final ageProvider = StateProvider<int>((ref) {
+  //   return 0;
+  // });
+  final int age;
+  const PersonModel(this.name, this.address, this.age);
+
+  PersonModel copyWith({String? name, String? address, int? age}) =>
+      PersonModel(name ?? this.name, address ?? this.address, age ?? this.age);
 }
