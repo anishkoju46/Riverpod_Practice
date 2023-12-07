@@ -21,6 +21,10 @@ class WeatherModel {
         current: current ?? this.current,
       );
 
+  //json ma encoded string ma auxa ani tyo datalai decode garney kam fromRawJsonle garxa.
+  //string ako lai json.decode ma pass garxa. ako string decodeable json xa ki nai bhanera check garxa.
+  //ho bhane Map ma change gardinxa hamro dartko casema.
+  //haina bhane chai method ma error auxa decode garda.
   factory WeatherModel.fromRawJson(String str) =>
       WeatherModel.fromJson(json.decode(str));
 

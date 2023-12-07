@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:riverpod_practice/Practice/Features/Users/Application/person_service.dart';
 import 'package:riverpod_practice/Practice/Features/Users/Persentation/Person/person_home.dart';
+import 'package:riverpod_practice/Practice/Features/Weather/Presentation/weather_home.dart';
 
 void main() {
   runApp(
@@ -21,7 +22,8 @@ class MyApp extends ConsumerWidget {
     final theme = ref.watch(personService.themeProvider);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const FrontPage(),
+      home: const WeatherHome(),
+      //home: const FrontPage(),
       theme: theme,
     );
   }

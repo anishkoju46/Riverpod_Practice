@@ -3,31 +3,31 @@ import 'dart:convert';
 import 'package:riverpod_practice/Practice/Features/Weather/Domain/condition_model.dart';
 
 class Current {
-  final int lastUpdatedEpoch;
+  final num lastUpdatedEpoch;
   final String lastUpdated;
-  final int tempC;
-  final double tempF;
-  final int isDay;
+  final num tempC;
+  final num tempF;
+  final num isDay;
   //Contion yo chai arko class ho hai
   //Return type is Class
   final Condition condition;
-  final double windMph;
-  final int windKph;
-  final int windDegree;
+  final num windMph;
+  final num windKph;
+  final num windDegree;
   final String windDir;
-  final int pressureMb;
-  final double pressureIn;
-  final int precipMm;
-  final int precipIn;
-  final int humidity;
-  final int cloud;
-  final double feelslikeC;
-  final double feelslikeF;
-  final int visKm;
-  final int visMiles;
-  final int uv;
-  final double gustMph;
-  final double gustKph;
+  final num pressureMb;
+  final num pressureIn;
+  final num precipMm;
+  final num precipIn;
+  final num humidity;
+  final num cloud;
+  final num feelslikeC;
+  final num feelslikeF;
+  final num visKm;
+  final num visMiles;
+  final num uv;
+  final num gustMph;
+  final num gustKph;
 
   const Current({
     required this.lastUpdatedEpoch,
@@ -56,29 +56,29 @@ class Current {
   });
 
   Current copyWith({
-    int? lastUpdatedEpoch,
+    num? lastUpdatedEpoch,
     String? lastUpdated,
-    int? tempC,
-    double? tempF,
-    int? isDay,
+    num? tempC,
+    num? tempF,
+    num? isDay,
     Condition? condition,
-    double? windMph,
-    int? windKph,
-    int? windDegree,
+    num? windMph,
+    num? windKph,
+    num? windDegree,
     String? windDir,
-    int? pressureMb,
-    double? pressureIn,
-    int? precipMm,
-    int? precipIn,
-    int? humidity,
-    int? cloud,
-    double? feelslikeC,
-    double? feelslikeF,
-    int? visKm,
-    int? visMiles,
-    int? uv,
-    double? gustMph,
-    double? gustKph,
+    num? pressureMb,
+    num? pressureIn,
+    num? precipMm,
+    num? precipIn,
+    num? humidity,
+    num? cloud,
+    num? feelslikeC,
+    num? feelslikeF,
+    num? visKm,
+    num? visMiles,
+    num? uv,
+    num? gustMph,
+    num? gustKph,
   }) =>
       Current(
         lastUpdatedEpoch: lastUpdatedEpoch ?? this.lastUpdatedEpoch,
@@ -114,26 +114,26 @@ class Current {
         lastUpdatedEpoch: json["last_updated_epoch"],
         lastUpdated: json["last_updated"],
         tempC: json["temp_c"],
-        tempF: json["temp_f"].toDouble(),
+        tempF: json["temp_f"],
         isDay: json["is_day"],
         condition: Condition.fromJson(json["condition"]),
-        windMph: json["wind_mph"].toDouble(),
+        windMph: json["wind_mph"],
         windKph: json["wind_kph"],
         windDegree: json["wind_degree"],
         windDir: json["wind_dir"],
         pressureMb: json["pressure_mb"],
-        pressureIn: json["pressure_in"].toDouble(),
+        pressureIn: json["pressure_in"],
         precipMm: json["precip_mm"],
         precipIn: json["precip_in"],
         humidity: json["humidity"],
         cloud: json["cloud"],
-        feelslikeC: json["feelslike_c"].toDouble(),
-        feelslikeF: json["feelslike_f"].toDouble(),
+        feelslikeC: json["feelslike_c"],
+        feelslikeF: json["feelslike_f"],
         visKm: json["vis_km"],
         visMiles: json["vis_miles"],
         uv: json["uv"],
-        gustMph: json["gust_mph"].toDouble(),
-        gustKph: json["gust_kph"].toDouble(),
+        gustMph: json["gust_mph"],
+        gustKph: json["gust_kph"],
       );
 
   Map<String, dynamic> toJson() => {
